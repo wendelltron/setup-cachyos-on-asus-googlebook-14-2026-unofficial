@@ -1,0 +1,13 @@
+[Unit]
+Description=Prepare ASUS Lapis graphics before the live desktop
+After=systemd-modules-load.service
+ConditionKernelCommandLine=asus.live_desktop=1
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+TimeoutStartSec=300
+ExecStart=/usr/bin/python3 /opt/cachyos-googlebook/assets/live/prepare-live.py
+
+[Install]
+WantedBy=multi-user.target
